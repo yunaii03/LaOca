@@ -1,0 +1,6 @@
+import random
+
+def volver_a_tirar():
+    total=total
+        x=random.randint(0,6)
+        total+=x
