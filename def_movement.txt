@@ -1,0 +1,15 @@
+#tirada dado--> 3
+
+def movement(): #inacabada
+jugador1=0
+
+jugador1=jugador1+x
+
+jugador1=3
+
+var_posicion=dicci[jugador1]
+#en este caso, la var sería la lista[3,7]
+#ahora vamos a ''printearlo'' en el  ,.tablero.
+tablero[var_posicion]="jugador1"
+return(jugador1) #nos dirá en que posición está el jugador
+
