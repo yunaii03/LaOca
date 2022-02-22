@@ -1,0 +1,47 @@
+
+#1
+import ubi,tabl from funciones
+
+print("Bienvenido a Guerra Naval XXL Comandante! ")
+
+nombrej1=input("Para empezar, indica tu nombre de jugador: ")
+
+ubi=coloc_barcos()
+
+print("Perfecto, te vas a enfrentar contra la IA")
+tabl=tableros()
+
+
+turn=turnos()
+
+#2
+tablero={0:['-','-','-','-','-','-','-','-','-','-'],
+        1:['-','-','-','-','-','-','-','-','-','-'],
+        2:['-','-','-','-','-','-','-','-','-','-'],
+        3:['-','-','-','-','-','-','-','-','-','-'],
+        4:['-','-','-','-','-','-','-','-','-','-'],
+        5:['-','-','-','-','-','-','-','-','-','-'],
+        6:['-','-','-','-','-','-','-','-','-','-'],
+        7:['-','-','-','-','-','-','-','-','-','-'],
+        8:['-','-','-','-','-','-','-','-','-','-'],
+        9:['-','-','-','-','-','-','-','-','-','-']}
+
+#3
+def turnos():
+    ataque=int(input("Que coordenada quieres atacar" ))
+    f=int(input("Dime la fila "))
+    c=int(input("Dime la columna"))
+    det=detector(f,c)   #que detectara si hay algún barco en esa posicion
+
+#4
+def detector(f,c):
+    if tablero[f,c]=="*":
+        tabero[f,c]=="º"
+        print("Has dado con un barco!")
+        j=actualizar_tablero()
+    else:
+        print("No hay ningún barco en ese coordenada, buen intento comandante! ")
+
+#5
+def actualizar_tablero():
+
