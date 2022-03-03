@@ -1,0 +1,47 @@
+from funciones import dado,movementalexa,win,posiciones,movementpc1, mov_especial
+
+p1=input("Bienvenido a la Oca, primero inserta tu nombre de jugador (Una letra en mayúscula) ")
+print("Perfecto, jugarás contra la IA, llamada Alexa. ")
+print("Para tirar los dados, tan solo tienes que introducir un punto (.). Si quieres finalizar la partida, bastará con que escribas exit.    A jugar! ")
+
+P1=0
+alexa=0
+
+
+jugar=input("Para tirar el dado, inserta un .")
+fin=False
+while fin==False:
+
+    tiro=dado()
+    P1=P1+tiro
+    print("Has sacado un",tiro,"!")
+    posicion_definitiva_p1c=movementpc1(tiro,P1)
+
+
+    P1 = P1 + posicion_definitiva_p1c
+    # cuando se cumpla esta funcion, sera true
+
+
+
+    print(tablero_juego)
+    tiro=dado()
+    Alexa=alexa+tiro
+    print("Alexa ha sacado un",tiro,"!")
+    posicion_definitiva_alexa=movementalexa(tiro,alexa)
+
+
+    Alexa=alexa+posicion_definitiva_alexa
+
+
+    print(tablero_juego)
+    posiciones(P1,Alexa)
+
+    fin=win()
+
+
+
+    # Esto nos sumará al contador las casillas movidas con el mov_esp
+
+
+jugar=input("Quieres tirar los dados?")
+

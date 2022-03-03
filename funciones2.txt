@@ -1,0 +1,453 @@
+import random
+
+
+
+def dado():
+   x=random.randint(1,6)
+   return(x)
+
+
+
+
+def movementpc1(tiro,P1):
+
+
+    tablero={0:["21", "20", "19", "18", "17", "16", "15", "14"],
+       1:["22", "43", "42", "41", "40", "39", "38", "13"],
+       2:["23", "44", "57", "56", "55", "54", "37", "12"],
+       3:["24", "45", "58", "63", "62", "53", "36", "11"],
+       4:["25", "46", "59", "60", "61", "52", "35", "10"],
+       5:["26", "47", "48", "49", "50", "51", "34", "9"],
+       6:["27", "28", "29", "30", "31", "32", "33", "8"],
+       7:["0", "_1", "_2", "_3", "_4", "_5", "_6", "_7"]}
+
+
+    tablero1={7: ["_", "_", "_", "_", "_", "_", "_", "_"],
+              6: ["_", "_", "_", "_", "_", "_", "_", "_"],
+              5: ["_", "_", "_", "_", "_", "_", "_", "_"],
+              4: ["_", "_", "_", "63","_", "_", "_", "_"],
+              3: ["_", "_", "_", "_", "_", "_", "_", "_"],
+              2: ["_", "_", "_", "_", "_", "_", "_", "_"],
+              1: ["_", "_", "_", "_", "_", "_", "_", "_"],
+              0: ["0", "_", "_", "_", "_", "_", "_", "_"] }
+        #primero mira filas, luego columnas
+
+    dicci={0:[0,0],
+    1:[0,1],---
+    2:[2,7],
+    3:[3,7],
+    4:[4,7],
+    5:[5,7],
+    6:[6,7],
+    7:[7,7],
+    8:[1,7],
+    9:[7,5],
+    10:[7,4],
+    11:[7,3],
+    12:[7,2],
+    13:[7,1],
+    14:[7,0],
+    15:[6,0],
+    16:[5,0],
+    17:[0,4],--
+    18:[3,0],
+    19:[2,0],
+    20:[1,0],
+    21:[0,0],
+    22:[0,1],
+    23:[0,2],
+    24:[0,3],
+    25:[0,4],
+    26:[0,5],
+    27:[0,6],
+    28:[1,6],
+    29:[2,6],
+    30:[3,6],
+    31:[4,6],
+    32:[5,6],
+    33:[6,6],
+    34:[6,5],
+    35:[6,4],
+    36:[6,3],
+    37:[6,2],
+    38:[6,1],
+    39:[5,1],
+    40:[4,1],
+    41:[3,1],
+    42:[2,1],
+    43:[1,1],
+    44:[1,2],
+    45:[1,3],
+    46:[1,4],
+    47:[1,5],
+    48:[2,5],
+    49:[3,5],
+    50:[4,5],
+    51:[5,5],
+    52:[5,4],
+    53:[5,3],
+    54:[5,2],
+    55:[4,1],
+    56:[3,2],
+    57:[2,2],
+    58:[2,3],
+    59:[2,4],
+    60:[3,4],
+    61:[4,4],
+    62:[4,3],
+    63:[3,3],
+    }
+
+
+    mov=tiro
+    P1=P1+mov
+    var_posicion=dicci[p1c]
+    tablero1[var_posicion]="P!"
+    print(tablero1)
+
+
+
+
+
+
+def movementalexa(tiro,alexa):
+
+    #tablero={0:["21", "20", "19", "18", "17", "16", "15", "14"],
+       #:["22", "43", "42", "41", "40", "39", "38", "13"],
+       #:["23", "44", "57", "56", "55", "54", "37", "12"],
+       #:["24", "45", "58", "63", "62", "53", "36", "11"],
+       #:["25", "46", "59", "60", "61", "52", "35", "10"],
+       #:["26", "47", "48", "49", "50", "51", "34", "9"],
+       #:["27", "28", "29", "30", "31", "32", "33", "8"],
+       #:["0", "_1", "_2", "_3", "_4", "_5", "_6", "_7"]}
+
+                   #0    1    2    3
+    tablero1={7: ["_", "_", "_", "_", "_", "_", "_", "_"],
+              6: ["_", "_", "_", "_", "_", "_", "_", "_"],
+              5: ["_", "_", "_", "_", "_", "_", "_", "_"],
+              4: ["_", "_", "_", "_","_", "_", "_", "_"],
+              3: ["_", "_", "_", "_", "_", "_", "_", "_"],
+              2: ["_", "_", "_", "_", "_", "_", "_", "_"],
+              1: ["_", "_", "_", "_", "_", "_", "_", "_"],
+              0: ["_", "_", "_", "_", "_", "_", "_", "_"] }
+        #primero mira filas, luego columnas
+
+    dicci={0:[0,0],
+    1:[0,1],
+    2:[2,7],
+    3:[3,7],
+    4:[4,7],
+    5:[5,7],
+    6:[6,7],
+    7:[7,7],
+    8:[1,7],
+    9:[7,5],
+    10:[7,4],
+    11:[7,3],
+    12:[7,2],
+    13:[7,1],
+    14:[7,0],
+    15:[6,0],
+    16:[5,0],
+    17:[0,4],
+    18:[3,0],
+    19:[2,0],
+    20:[1,0],
+    21:[0,0],
+    22:[0,1],
+    23:[0,2],
+    24:[0,3],
+    25:[0,4],
+    26:[0,5],
+    27:[0,6],
+    28:[1,6],
+    29:[2,6],
+    30:[3,6],
+    31:[4,6],
+    32:[5,6],
+    33:[6,6],
+    34:[6,5],
+    35:[6,4],
+    36:[6,3],
+    37:[6,2],
+    38:[6,1],
+    39:[5,1],
+    40:[4,1],
+    41:[3,1],
+    42:[2,1],
+    43:[1,1],
+    44:[1,2],
+    45:[1,3],
+    46:[1,4],
+    47:[1,5],
+    48:[2,5],
+    49:[3,5],
+    50:[4,5],
+    51:[5,5],
+    52:[5,4],
+    53:[5,3],
+    54:[5,2],
+    55:[4,1],
+    56:[3,2],
+    57:[2,2],
+    58:[2,3],
+    59:[2,4],
+    60:[3,4],
+    61:[4,4],
+    62:[4,3],
+    63:[3,3],
+    }
+
+
+
+    mov=tiro
+    alexa=alexa+mov
+    var_posicion=dicci[alexa]
+    tablero1[var_posicion]="AL"
+    print(tablero1)
+    who='AL'
+    cas_especial=ifs(alexa,who)
+    return alexa
+
+
+
+
+
+
+
+
+#Para tener las posiciomes actualizadas,todo el rato, el main actualiza esto.
+def posiciones(P1,Alexa):
+    return(P1,Alexa)
+
+
+def win(who):
+    print("Enhorabuena",who,"!!!. Eres el ganador de la partida ")
+
+
+def puente6(posicion_j,who):
+    posicion_j=posicion_j+6
+    mov_especial(posicion_j,who)
+
+def calavera(posicion_j,who):
+    posicion_j = 0
+    mov_especial(posicion_j, who)
+    print('Has retrocedido hasta la casilla principal y te encuentras en la salida', who)
+
+
+def pozo_bronze(posicion_j,who):
+    p, al(posiciones)  #lo cojemos de la funcion de contador de arriba.
+    if who == "AL":
+        for x in range(3):
+            print("Alexa se perderá dos turnos. Ya puedes tirar los dados ")
+            tiro = dado()
+            Alexa = al + tiro
+            mov_especial(Alexa, who)
+
+    if who == "P1":
+        for x in range(3):
+            print("P1 se perderá dos turnos. Ya puedes tirar los dados ")
+            tiro = dado()
+            P1 = p + tiro
+            mov_especial(P1, who)
+
+def posada(posicion_j,who):
+    p, al= (posiciones) #lo cojemos de la funcion de contador de arriba
+    if who=="AL":
+        for x in range(2):
+            print("Alexa se perderá dos turnos. Ya puedes tirar los dados ")
+            tiro=dado()
+            Alexa=al+tiro
+            mov_especial(Alexa,who)
+
+    if who == "P1":
+        for x in range(2):
+            print("P1 se perderá dos turnos. Ya puedes tirar los dados ")
+            tiro = dado()
+            P1 = p + tiro
+            mov_especial(P1, who)
+
+
+def dados53(posicion_j,who):
+    print("Tirarás dos veces y avanzarás la suma de las dos tiradas.")
+    z=dado()
+    print("has sacado un",z)
+    y = dado()
+    print("has sacado un", z)
+    x=z+y
+    posicion_j=posicion_j+x
+    print("avanzas",x)
+
+    mov_especial(posicion_j,who)
+
+def dados26(posicion_j,who):
+    print("Tirarás dos veces y avanzarás la suma de las dos tiradas.")
+    z=dado()
+    print("has sacado un",z)
+    y = dado()
+    print("has sacado un", z)
+    x=z+y
+    posicion_j=posicion_j+x
+    print("avanzas",x)
+    mov_especial(posicion_j,who)
+
+
+
+
+def puente12(posicion_j,who):
+    posicion_j = posicion_j - 6
+    mov_especial (posicion_j, who)
+
+
+def muerte(posicion_j,who):
+    posicion_j = 0
+    mov_especial(posicion_j, who)
+    print('Has retrocedido hasta la casilla principal y te encuentras en la salida',who)
+
+def laberinto(posicion_j,who):
+    if who == "AL":
+        mov_especial(posicion_j, who)
+    if who == "P1":
+        posicion_j = 30
+        mov_especial(posicion_j, who)
+
+    #no seria mejor, llamar al contador y cambiar la posicion del jugador alli
+    #y queel contador llamase a la funcion de movimiento?
+
+
+
+
+def oca4(posicion_j,who):
+    if posicion_j==5:
+        posicion_j=14 #jeje acabarlo
+
+    if posicion_j==14:
+        posicion_j=32
+
+    if posicion_j==32:
+        posicion_j=41
+
+    if posicion_j==41:
+        posicion_j=50
+
+    if posicion_j==50:
+        posicion_j=59
+
+    mov_especial(posicion_j,who)
+
+
+
+
+
+
+
+
+
+
+
+def mov_especial(posicion_esp,who):
+    tablero1 = {7: ["_", "_", "_", "_", "_", "_", "_", "_"],
+                6: ["_", "_", "_", "_", "_", "_", "_", "_"],
+                5: ["_", "_", "_", "_", "_", "_", "_", "_"],
+                4: ["_", "_", "_", "_", "_", "_", "_", "_"],
+                3: ["_", "_", "_", "_", "_", "_", "_", "_"],
+                2: ["_", "_", "_", "_", "_", "_", "_", "_"],
+                1: ["_", "_", "_", "_", "_", "_", "_", "_"],
+                0: ["_", "_", "_", "_", "_", "_", "_", "_"]}
+    # primero mira filas, luego columnas
+
+    dicci = {0: [0, 0],
+             1: [0, 1],
+             2: [2, 7],
+             3: [3, 7],
+             4: [4, 7],
+             5: [5, 7],
+             6: [6, 7],
+             7: [7, 7],
+             8: [1, 7],
+             9: [7, 5],
+             10: [7, 4],
+             11: [7, 3],
+             12: [7, 2],
+             13: [7, 1],
+             14: [7, 0],
+             15: [6, 0],
+             16: [5, 0],
+             17: [0, 4],
+             18: [3, 0],
+             19: [2, 0],
+             20: [1, 0],
+             21: [0, 0],
+             22: [0, 1],
+             23: [0, 2],
+             24: [0, 3],
+             25: [0, 4],
+             26: [0, 5],
+             27: [0, 6],
+             28: [1, 6],
+             29: [2, 6],
+             30: [3, 6],
+             31: [4, 6],
+             32: [5, 6],
+             33: [6, 6],
+             34: [6, 5],
+             35: [6, 4],
+             36: [6, 3],
+             37: [6, 2],
+             38: [6, 1],
+             39: [5, 1],
+             40: [4, 1],
+             41: [3, 1],
+             42: [2, 1],
+             43: [1, 1],
+             44: [1, 2],
+             45: [1, 3],
+             46: [1, 4],
+             47: [1, 5],
+             48: [2, 5],
+             49: [3, 5],
+             50: [4, 5],
+             51: [5, 5],
+             52: [5, 4],
+             53: [5, 3],
+             54: [5, 2],
+             55: [4, 1],
+             56: [3, 2],
+             57: [2, 2],
+             58: [2, 3],
+             59: [2, 4],
+             60: [3, 4],
+             61: [4, 4],
+             62: [4, 3],
+             63: [3, 3],
+             }
+
+
+    var_posicion = dicci[posicion_esp]
+    tablero1[var_posicion] = who
+    print(tablero1)
+    print("Tu posicion ha cambiado! ")
+    activador_main="activado"
+
+    return(posicion_esp,who,activador_main)
+
+    tablero1 = {7: ["_", "_", "_", "_", "_", "_", "_", "_"],
+                6: ["_", "_", "_", "_", "_", "_", "_", "_"],
+                5: ["_", "_", "_", "_", "_", "_", "_", "_"],
+                4: ["_", "_", "_", "_", "_", "_", "_", "_"],
+                3: ["_", "_", "_", "_", "_", "_", "_", "_"],
+                2: ["_", "_", "_", "_", "_", "_", "_", "_"],
+                1: ["_", "_", "_", "_", "_", "_", "_", "_"],
+                0: ["_", "_", "_", "_", "_", "_", "_", "_"]}
+
+
+
+
+
+def laberinto():
+    if dado==42:
+        alejandro=alejandro-12
+        print("Has retrocedido 12 casillas y te encuentras en la casilla",alejandro)
+
+
+
