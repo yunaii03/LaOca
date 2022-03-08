@@ -1,11 +1,62 @@
+#llamamos a las funciones
+from funciones import dado,movementpc1,movementalexa,ifs
 
-    0     1     2     3     4     5     6     7
-0 "21", "20", "19", "18", "17", "16", "15", "14", 0
-1 "22", "43", "42", "41", "40", "39", "38", "13", 1
-2 "23", "44", "57", "56", "55", "54", "37", "12", 2
-3 "24", "45", "58", "63", "62", "53", "36", "11", 3
-4 "25", "46", "59", "60", "61", "52", "35", "10", 4
-5 "26", "47", "48", "49", "50", "51", "34", "9",  5
-6 "27", "28", "29", "30", "31", "32", "33", "8",  6
-7  "0", "_1", "_2", "_3", "_4", "_5", "_6", "_7", 7
-    0     1     2     3    4     5     6     7
+
+p1=input("Bienvenido a la Oca")
+print("Perfecto, jugarás contra la IA, llamada Alexa. ")
+print("Para tirar los dados, tan solo tienes que introducir un punto (.). Si quieres finalizar la partida, bastará con que escribas exit.    A jugar! ")
+
+#contador de casilla
+P1=0
+alexa=0
+who="xd"
+
+
+#JUEGO
+
+jugar=input("Para tirar el dado, inserta un .")
+
+while jugar!="exit" and who!="FINAL":
+    #TURNO P1
+    tiro = dado()
+    P1 = P1 + tiro
+    print("Has sacado un", tiro, "!")
+    #posicion SIN casilla especial:
+    who="P1"
+    posicion_definitiva_p1c, who = movementpc1(P1, who)
+    P1 =posicion_definitiva_p1c
+
+    activador="desactivado"
+    #Posicion CON casilla especial:
+
+    activador1, who, posicion_f = ifs(P1, who, activador)
+    if activador1 == "activado":
+        P1 = P1 + posicion_f
+    else:
+        continue
+
+    jugar = input("Quieres tirar los dados?")
+
+
+
+
+    #TURNO ALEXA
+    tiro=dado()
+    alexa=alexa+tiro
+    print("Alexa ha sacado un",tiro,"!")
+    # posicion SIN casilla especial:
+    who = "alexa"
+    posicion_definitiva_alexa, who = movementalexa(P1, who)
+    alexa = posicion_definitiva_alexa
+
+    activador = "desactivado"
+    # Posicion CON casilla especial:
+
+    activador1, who, posicion_f = ifs(alexa, who, activador)
+    if activador1 == "activado":
+        alexa = alexa + posicion_f
+    else:
+        continue
+
+    jugar = input("Quieres tirar los dados?")
+
