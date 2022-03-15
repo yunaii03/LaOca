@@ -4,7 +4,7 @@ from funciones import dado,movementpc1,movementalexa,ifs
 
 p1=input("Bienvenido a la Oca")
 print("Perfecto, jugarás contra la IA, llamada Alexa. ")
-print("Para tirar los dados, tan solo tienes que introducir un punto (.). Si quieres finalizar la partida, bastará con que escribas exit.    A jugar! ")
+print("Para tirar los dados, tan solo tienes que introducir un punto (.) Si quieres finalizar la partida, bastará con que escribas exit.    A jugar! ")
 
 #contador de casilla
 P1=0
@@ -18,45 +18,42 @@ jugar=input("Para tirar el dado, inserta un .")
 
 while jugar!="exit" and who!="FINAL":
     #TURNO P1
-    tiro = dado()
-    P1 = P1 + tiro
+    P1,tiro = dado(P1)
     print("Has sacado un", tiro, "!")
     #posicion SIN casilla especial:
     who="P1"
-    posicion_definitiva_p1c, who = movementpc1(P1, who)
+    posicion_definitiva_p1c, who,tablero1 = movementpc1(P1, who)
     P1 =posicion_definitiva_p1c
 
     activador="desactivado"
     #Posicion CON casilla especial:
 
     activador1, who, posicion_f = ifs(P1, who, activador)
+
     if activador1 == "activado":
         P1 = P1 + posicion_f
     else:
-        continue
+        print("De verdad que no la hay")
 
-    jugar = input("Quieres tirar los dados?")
+    jugar = input("Quieres que Alexa tire?")
+    if jugar=='.':
+        #TURNO ALEXA
+        alexa,tiro=dado(alexa)
+        print("Alexa ha sacado un",tiro,"!")
+        # posicion SIN casilla especial:
+        who = "alexa"
+        posicion_definitiva_alexa, who,tablero1 = movementalexa(P1, who)
+        print(type(posicion_definitiva_alexa))
+        alexa = posicion_definitiva_alexa
 
+        activador = "desactivado"
+        # Posicion CON casilla especial:
 
+        activador1, who, posicion_f = ifs(alexa, who, activador)
+        if activador1 == "activado":
+            alexa = alexa + posicion_f
+        else:
+            continue
 
-
-    #TURNO ALEXA
-    tiro=dado()
-    alexa=alexa+tiro
-    print("Alexa ha sacado un",tiro,"!")
-    # posicion SIN casilla especial:
-    who = "alexa"
-    posicion_definitiva_alexa, who = movementalexa(P1, who)
-    alexa = posicion_definitiva_alexa
-
-    activador = "desactivado"
-    # Posicion CON casilla especial:
-
-    activador1, who, posicion_f = ifs(alexa, who, activador)
-    if activador1 == "activado":
-        alexa = alexa + posicion_f
-    else:
-        continue
-
-    jugar = input("Quieres tirar los dados?")
+        jugar = input("Quieres tirar los dados?")
 
