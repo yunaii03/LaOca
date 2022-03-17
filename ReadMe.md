@@ -6,3 +6,10 @@ Se ha tenido (Yunai) una idea brillante, una forma para indexar las casillas, me
 Dia 3. (14/02/2022)
 Joan ha asignado cada casilla que cumple una funcion con el tablero. Yunai ha acabado el diccionario de coordenadas. Alejandro y Luis han hecho la funcion de los dados (volver a tirar).
 Dia 4. (15/02/2022)
+
+
+Dia 15 (17/03/2022)
+Luis no se ha presentado siquiera , ya que ha tenido que ir de úrgencia al mèdico.
+Alejandro no se ha presentado tampoco, en este caso ha tenido que ir a comisaria por razones que no són de nuestro saber. 
+Yunai no ha proseguido con su oca ya que se ha dejado el diusco duro...Por el contrrario ha empezado quien és quien junto a sus compañeros horas antes.
+Joan ha adelantado batalla naval...
