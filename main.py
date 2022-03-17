@@ -1,11 +1,12 @@
-
-0     1     2     3     4     5     6     7
-0 "21", "20", "19", "18", "17", "16", "15", "14", 0
-1 "22", "43", "42", "41", "40", "39", "38", "13", 1
-2 "23", "44", "57", "56", "55", "54", "37", "12", 2
-3 "24", "45", "58", "63", "62", "53", "36", "11", 3
-4 "25", "46", "59", "60", "61", "52", "35", "10", 4
-5 "26", "47", "48", "49", "50", "51", "34", "9",  5
-6 "27", "28", "29", "30", "31", "32", "33", "8",  6
-7  "0", "_1", "_2", "_3", "_4", "_5", "_6", "_7", 7
-0     1     2     3    4     5     6     7
+dicci1={
+persona1={'nombre':'Alejandro','sexo':'M','gafas':'yes','barba':'no','pendientes':'no','color_pelo':'marrón','gorra':'yes'}
+persona2={'nombre':'Sara','sexo':'F','gafas':'no','barba':'no','pendientes':'yes','color_pelo':'negra','gorra':'no'}
+persona3={'nombre':'Pedro','sexo':'M','gafas':'no','barba':'yes','pendientes':'yes','color_pelo':'rubio','gorra':'yes'}
+persona4={'nombre':'Carla','sexo':'F','gafas':'yes','barba':'no','pendientes':'no','color_pelo':'lila','gorra':'no'}
+persona5={'nombre':'Lewis','sexo':'M','gafas':'no','barba':'yes','pendientes':'yes','color_pelo':'negro','gorra':'yes'}
+persona6={'nombre':'Luis','pelo_largo':'no','pelo_corto':'Yes','bigote':'No','calvo':'No'}
+persona7={'nombre':'Maricarmen','sexo':'F','pelo_largo':'es','pelo_corto':'No','bigote':'No','calvo':'No'}
+persona8={'nombre':'Alex','pelo_largo':'no','pelo_corto':'yes','bigote':'Yes','calvo':'No'}
+persona9={'nombre':'Alejandra','pelo_largo':'yes','pelo_corto':'No','bigote':'No','calvo':'No'}
+persona10={'nombre':'Joan','pelo_largo':'yes','pelo_corto':'no','bigote':'Yes','calvo':'No'}
+}
