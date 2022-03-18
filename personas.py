@@ -1,0 +1,11 @@
+dicci1={
+persona1={'nombre':'Alejandro','sexo':'M','gafas':'yes','barba':'no','pendientes':'no','color_pelo':'marrón','gorra':'yes'}
+persona2={'nombre':'Sara','sexo':'F','gafas':'no','barba':'no','pendientes':'yes','color_pelo':'negra','gorra':'no'}
+persona3={'nombre':'Pedro','sexo':'M','gafas':'no','barba':'yes','pendientes':'yes','color_pelo':'rubio','gorra':'yes'}
+persona4={'nombre':'Carla','sexo':'F','gafas':'yes','barba':'no','pendientes':'no','color_pelo':'lila','gorra':'no'}
+persona5={'nombre':'Lewis','sexo':'M','gafas':'no','barba':'yes','pendientes':'yes','color_pelo':'negro','gorra':'yes'}
+persona6={'nombre':'Luis','sexo':'M','gafas':'no','barba':'yes','pendientes':'no','color_pelo':'rubio','gorra':'no'}
+persona7={'nombre':'Maricarmen','sexo':'F','gafas':'yes','barba':'no','pendientes':'no','color_pelo':'azul','gorra':'yes'}
+persona8={'nombre':'Alex','sexo':'M','gafas':'no','barba':'no','pendientes':'yes','color_pelo':'marrón','gorra':'no'}
+persona9={'nombre':'Alejandra','sexo':'F','gafas':'no','barba':'No','pendientes':'yes','color_pelo':'negro','gorra':'yes'}
+persona10={'nombre':'Joan','sexo':'M','gafas':'no','barba':'no','pendientes':'yes','color_pelo':'lila','gorra':'no'}
