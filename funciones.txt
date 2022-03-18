@@ -2,15 +2,14 @@ import random
 
 
 # DADO
-def dado(P1):
-    tiro = random.randint(1, 6)
-    P1 = P1 + tiro
-    return (P1, tiro)
+def dado(coord):
+    tiro =random.randint(1, 6)
+    return (tiro)
 
 
 # MOVIMIENTO P1
-def movementpc1(P1, who):
-    # 0     1     2    3       4    5    6    7
+def movementpc1(P1, who,tablero1):
+    # 0    º         0     1     2    3      4    5    6    7
     tablero = {7: ["21", "20", "19", "18", "17", "16", "15", "14"],
                6: ["22", "43", "42", "41", "40", "39", "38", "13"],
                5: ["23", "44", "57", "56", "55", "54", "37", "12"],
@@ -20,15 +19,7 @@ def movementpc1(P1, who):
                1: ["27", "28", "29", "30", "31", "32", "33", "8"],
                0: ["0", "1", "2", "3", "4", "5", "6", "7"]}
 
-    # 0     1     2    3    4    5    6    7
-    tablero1 = {7: ["_", "_", "_", "_", "_", "_", "_", "_"],
-                6: ["_", "_", "_", "_", "_", "_", "_", "_"],
-                5: ["_", "_", "_", "_", "_", "_", "_", "_"],
-                4: ["_", "_", "_", "_", "_", "_", "_", "_"],
-                3: ["_", "_", "_", "_", "_", "_", "_", "_"],
-                2: ["_", "_", "_", "_", "_", "_", "_", "_"],
-                1: ["_", "_", "_", "_", "_", "_", "_", "_"],
-                0: ["0", "_", "_", "_", "_", "_", "_", "_"]}
+
     # primero mira filas, luego columnas
     dicci = {0: [0, 0],
              1: [0, 1],
@@ -95,22 +86,26 @@ def movementpc1(P1, who):
              62: [4, 4],
              63: [4, 3],
              }
+    if P1 >= 63:
+        activador = "activado"
+        P1 = win(who)
 
-    var_posicion = dicci[P1]
-    x = var_posicion[0]
-    y = var_posicion[1]
-    tablero1[x][y] = 'P1'
+    elif P1<63:
+        var_posicion = dicci[P1] #3
+        x = var_posicion[0]
+        y = var_posicion[1]
+        tablero1[x][y] = 'P1'
 
-    for z in tablero1:
-        for m in tablero1[z]:
-            print(m, end=" ")
+        for z in tablero1:
+            for m in tablero1[z]:
+                print(m, end=" ")
+            print()
         print()
-    print()
-    return (P1, who, tablero1)
+        return (P1, who, tablero1)
 
 
 # MOVEMENTALEXA
-def movementalexa(alexa, who):
+def movementalexa(alexa, who,tablero1):
     # {0:["21", "20", "19", "18", "17", "16", "15", "14"],
     #:["22", "43", "42", "41", "40", "39", "38", "13"],
     #:["23", "44", "57", "56", "55", "54", "37", "12"],
@@ -121,16 +116,15 @@ def movementalexa(alexa, who):
     #:["0", "_1", "_2", "_3", "_4", "_5", "_6", "_7"]}
 
     # 0    1    2    3
-    tablero1 = {7: ["_", "_", "P", "O", "_", "_", "_","O"],
-                6: ["_", "_", "L", "O", "_", "_", "_","_"],
-                5: ["O", "_", "_", "_", "_", "O", "_","P"],
-                4: ["_", "O", "M", "*", "_", "D", "O","_"],
-                3: ["_", "_", "O", "_", "_", "_", "_","_"],
-                2: ["D", "_", "_", "_", "O", "_", "_","O"],
-                1: ["O", "_", "_", "_", "P", "O", "_","_"],
-                0: ["0", "_", "_", "_", "_", "O", "P","_"]}
     # primero mira filas, luego columnas
-
+    tablero1 = {7: ["_", "_", "P", "O", "_", "_", "_", "O"],
+                6: ["_", "_", "L", "O", "_", "_", "_", "_"],
+                5: ["O", "_", "_", "_", "_", "O", "_", "P"],
+                4: ["_", "O", "M", "*", "_", "D", "O", "_"],
+                3: ["_", "_", "O", "_", "_", "_", "_", "_"],
+                2: ["D", "_", "_", "_", "O", "_", "_", "O"],
+                1: ["O", "_", "_", "_", "P", "O", "_", "_"],
+                0: ["0", "_", "_", "_", "_", "O", "P", "_"]}
     dicci = {0: [0, 0],
              1: [0, 1],
              2: [0, 2],
@@ -197,17 +191,22 @@ def movementalexa(alexa, who):
              63: [4, 3],
              }
 
-    var_posicion = dicci[alexa]
-    x = var_posicion[0]
-    y = var_posicion[1]
-    tablero1[x][y] = 'alexa'
+    if alexa >= 63:
+        activador = "activado"
+        alexa = win(who)
 
-    for z in tablero1:
-        for m in tablero1[z]:
-            print(m, end=" ")
+    elif alexa<63:
+        var_posicion = dicci[alexa]
+        x = var_posicion[0]
+        y = var_posicion[1]
+        tablero1[x][y] = 'AL'
+
+        for z in tablero1:
+            for m in tablero1[z]:
+                print(m, end=" ")
+            print()
         print()
-    print()
-    return (alexa, who, tablero1)
+        return (alexa, who, tablero1)
 
 
 
@@ -220,109 +219,118 @@ def ifs(posicion_j, who, activador):
         posicion_f = oca4(posicion_j, who)
         return activador, who, posicion_f
 
-    if posicion_j == 9 or posicion_j == 18 or posicion_j == 27 or posicion_j == 36 or posicion_j == 45 or posicion_j == 54:
+
+    elif posicion_j == 9 or posicion_j == 18 or posicion_j == 27 or posicion_j == 36 or posicion_j == 45 or posicion_j == 54:
         activador = "activado"
         posicion_f = oca5(posicion_j, who)
         return activador, who, posicion_f
 
-    if posicion_j == 6:
+    elif posicion_j == 6:
         activador = "activado"
         posicion_f = puente6(posicion_j, who)
         return activador, who, posicion_f
 
-    if posicion_j == 12:
+    elif posicion_j == 12:
         activador = "activado"
         posicion_f = puente12(posicion_j, who)
         return activador, who, posicion_f
 
-    if posicion_j == 19:
+    elif posicion_j == 19:
         activador = "activado"
         posicion_f = posada(posicion_j, who)
         return activador, who, posicion_f
 
-    if posicion_j == 31:
+    elif posicion_j == 31:
         activador = "activado"
         posicion_f = pozo_bronze(posicion_j, who)
         return activador, who, posicion_f
 
-    if posicion_j == 26:
+    elif posicion_j == 26:
         activador = "activado"
         posicion_f = dados26(posicion_j, who)
         return activador, who, posicion_f
 
-    if posicion_j == 58:
+    elif posicion_j == 58:
         activador = "activado"
         posicion_f = muerte(posicion_j, who)
         return activador, who, posicion_f
 
-    if posicion_j == 53:
+    elif posicion_j == 53:
         activador = "activado"
         posicion_f = dados53(posicion_j, who)
         return activador, who, posicion_f
 
-    if posicion_j == 42:
+    elif posicion_j == 42:
         activador = "activado"
         posicion_f = laberinto(posicion_j, who)
         return activador, who, posicion_f
 
-    if posicion_j == 58:
+    elif posicion_j == 58:
         activador = "activado"
         posicion_f = calavera(posicion_j, who)
         return activador, who, posicion_f
 
-    if posicion_j >= 62:
+    elif posicion_j >= 62:
         activador = "activado"
         posicion_f = win(who)
         return activador, who, posicion_f
 
     else:
+        activador="desactivado"
         print("No hay casilla especial")
         return activador, who, posicion_j
 
 
 # POSADA
 def posada(posicion_j, who):
-    if who == "alexa":
+    if who == "AL":
         who = "P1"
+        print("Alexa se perderá dos turnos. Ya puedes tirar los dados ")
         for x in range(2):
-            print("Alexa se perderá dos turnos. Ya puedes tirar los dados ")
-            tiro,test = dado(posicion_j)
+            tiro = dado(posicion_j)
+            print("Has sacado un",tiro)
             posicion_j = posicion_j + tiro
-            mov_especial(posicion_j, who)
+        mov_especial(posicion_j, who)
         return posicion_j
-    if who == "P1":
-        who = "alexa"
+    elif who == "P1":
+        who = "AL"
+        print("P1 se perderá dos turnos. Ya puedes tirar los dados ")
         for x in range(2):
-            print("P1 se perderá dos turnos. Ya puedes tirar los dados ")
-            tiro,test = dado(posicion_j)
+            tiro = dado(posicion_j)
             posicion_j = posicion_j + tiro
-            mov_especial(posicion_j, who)
+            print("Has sacado un", tiro)
+        mov_especial(posicion_j, who)
         return posicion_j
+
 
 
 # POZO BRONCE
 def pozo_bronze(posicion_j, who):
-    if who == "alexa":
+    if who == "AL":
         who = "P1"
+        print("Alexa se perderá dos turnos. Ya puedes tirar los dados ")
         for x in range(3):
-            print("Alexa se perderá dos turnos. Ya puedes tirar los dados ")
             tiro = dado(posicion_j)
             posicion_j = posicion_j + tiro
+            print("Has sacado un", tiro)
         mov_especial(posicion_j, who)
         return posicion_j
 
-    if who == "P1":
-        who = "alexa"
+
+    elif who == "P1":
+        who = "AL"
+        print("P1 se perderá dos turnos. Ya puedes tirar los dados ")
         for x in range(3):
-            print("P1 se perderá dos turnos. Ya puedes tirar los dados ")
             tiro = dado(posicion_j)
             posicion_j = posicion_j + tiro
+            print("Has sacado un", tiro)
         mov_especial(posicion_j, who)
         return posicion_j
 
 
 def win(who):
     print("Enhorabuena", who, "!!!. Eres el ganador de la partida ")
+    exit()
 
 
 # PUENTE
@@ -351,9 +359,9 @@ def calavera(posicion_j, who):
 # DADOS
 def dados53(posicion_j, who):
     print(who, "Tirarás dos veces y avanzarás la suma de las dos tiradas.")
-    test,z = dado(posicion_j)
+    z = dado(posicion_j)
     print("has sacado un", z)
-    test,y = dado(posicion_j)
+    y = dado(posicion_j)
     print("has sacado un", y)
     x = z + y
     posicion_j = posicion_j + x
@@ -365,9 +373,9 @@ def dados53(posicion_j, who):
 
 def dados26(posicion_j, who):
     print(who, "Tirarás dos veces y avanzarás la suma de las dos tiradas.")
-    test,z = dado(posicion_j)
+    z = dado(posicion_j)
     print("has sacado un", z)
-    test,y = dado(posicion_j)
+    y = dado(posicion_j)
     print("has sacado un", y)
     x = z + y
     posicion_j = posicion_j + x
@@ -387,12 +395,13 @@ def muerte(posicion_j, who):
 
 # LABERINTO
 def laberinto(posicion_j, who):
-    if who == "alexa":
+    if who == "AL":
         posicion_j = 30
         print("Alexa, caido en un laberinto, irás a la casilla 30")
         mov_especial(posicion_j, who)
         return posicion_j
-    if who == "P1":
+
+    elif who == "P1":
         posicion_j = 30
         print("Jugador 1, has caido en un laberinto, irás a la casilla 30")
         mov_especial(posicion_j, who)
@@ -404,7 +413,6 @@ def oca4(posicion_j, who):
     if posicion_j == 5:
         posicion_j = 14
         print(who, "has caido en una Oca, pasas a la casilla 14")
-
     elif posicion_j == 14:
         posicion_j = 32
         print(who, "has caido en una Oca, pasas a la casilla 32")
@@ -426,6 +434,7 @@ def oca5(posicion_j, who):
     if posicion_j == 9:
         posicion_j = 14
         print(who, "has caido en una Oca, pasas a la casilla 14")
+
     elif posicion_j == 18:
         posicion_j = 32
         print(who, "has caido en una Oca, pasas a la casilla 32")
@@ -446,14 +455,14 @@ def oca5(posicion_j, who):
 
 
 def mov_especial(posicion_esp, who):
-    tablero1 = {7: ["_", "_", "_", "_", "_", "_", "_", "_"],
-                6: ["_", "_", "_", "_", "_", "_", "_", "_"],
-                5: ["_", "_", "_", "_", "_", "_", "_", "_"],
-                4: ["_", "_", "_", "_", "_", "_", "_", "_"],
-                3: ["_", "_", "_", "_", "_", "_", "_", "_"],
-                2: ["_", "_", "_", "_", "_", "_", "_", "_"],
-                1: ["_", "_", "_", "_", "_", "_", "_", "_"],
-                0: ["_", "_", "_", "_", "_", "_", "_", "_"]}
+    tablero1 = {7: ["_", "_", "P", "O", "_", "_", "_", "O"],
+                6: ["_", "_", "L", "O", "_", "_", "_", "_"],
+                5: ["O", "_", "_", "_", "_", "O", "_", "P"],
+                4: ["_", "O", "M", "*", "_", "D", "O", "_"],
+                3: ["_", "_", "O", "_", "_", "_", "_", "_"],
+                2: ["D", "_", "_", "_", "O", "_", "_", "O"],
+                1: ["O", "_", "_", "_", "P", "O", "_", "_"],
+                0: ["0", "_", "_", "_", "_", "O", "P", "_"]}
     # primero mira filas, luego columnas
 
     dicci = {0: [0, 0],
@@ -467,7 +476,6 @@ def mov_especial(posicion_esp, who):
              8: [1, 7],
              9: [2, 7],
              10: [3, 7],
-
              11: [4, 7],
              12: [5, 7],
              13: [6, 7],
@@ -522,15 +530,18 @@ def mov_especial(posicion_esp, who):
              62: [4, 4],
              63: [4, 3],
              }
+    if posicion_esp >= 63:
+        activador = "activado"
+        P1 = win(who)
+    elif    posicion_esp<63:
+        var_posicion = dicci[posicion_esp]
+        x = var_posicion[0]
+        y = var_posicion[1]
+        tablero1[x][y] = who
 
-    var_posicion = dicci[posicion_esp]
-    x = var_posicion[0]
-    y = var_posicion[1]
-    tablero1[x][y] = who
-
-    for z in tablero1:
-        for m in tablero1[z]:
-            print(m, end=" ")
+        for z in tablero1:
+            for m in tablero1[z]:
+                print(m, end=" ")
+            print()
         print()
-    print()
 

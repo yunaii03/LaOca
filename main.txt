@@ -1,6 +1,17 @@
 #llamamos a las funciones
+#siempre pasa algo en la casilla 20
+
 from funciones import dado,movementpc1,movementalexa,ifs
 
+
+tablero1 = {7: ["_", "_", "P", "O", "_", "_", "_","O"],
+                6: ["_", "_", "L", "O", "_", "_", "_","_"],
+                5: ["O", "_", "_", "_", "_", "O", "_","P"],
+                4: ["_", "O", "M", "*", "_", "D", "O","_"],
+                3: ["_", "_", "O", "_", "_", "_", "_","_"],
+                2: ["D", "_", "_", "_", "O", "_", "_","O"],
+                1: ["O", "_", "_", "_", "P", "O", "_","_"],
+                0: ["0", "_", "_", "_", "_", "O", "P","_"]}
 
 p1=input("Bienvenido a la Oca")
 print("Perfecto, jugarás contra la IA, llamada Alexa. ")
@@ -16,13 +27,15 @@ who="xd"
 
 jugar=input("Para tirar el dado, inserta un .")
 
-while jugar!="exit" and who!="FINAL":
+while jugar=="." and who!="FINAL":
     #TURNO P1
-    P1,tiro = dado(P1)
+    tiro = dado(P1)
+    P1=P1+tiro
+
     print("Has sacado un", tiro, "!")
     #posicion SIN casilla especial:
     who="P1"
-    posicion_definitiva_p1c, who,tablero1 = movementpc1(P1, who)
+    posicion_definitiva_p1c, who,tablero1 = movementpc1(P1, who,tablero1)
     P1 =posicion_definitiva_p1c
 
     activador="desactivado"
@@ -31,18 +44,19 @@ while jugar!="exit" and who!="FINAL":
     activador1, who, posicion_f = ifs(P1, who, activador)
 
     if activador1 == "activado":
-        P1 = P1 + posicion_f
+        P1=posicion_f
     else:
         print("De verdad que no la hay")
 
     jugar = input("Quieres que Alexa tire?")
     if jugar=='.':
         #TURNO ALEXA
-        alexa,tiro=dado(alexa)
+        tiro=dado(alexa)
+        alexa=alexa+tiro
         print("Alexa ha sacado un",tiro,"!")
         # posicion SIN casilla especial:
-        who = "alexa"
-        posicion_definitiva_alexa, who,tablero1 = movementalexa(P1, who)
+        who = "AL"
+        posicion_definitiva_alexa, who,tablero1 = movementalexa(alexa, who,tablero1)
         print(type(posicion_definitiva_alexa))
         alexa = posicion_definitiva_alexa
 
@@ -51,9 +65,9 @@ while jugar!="exit" and who!="FINAL":
 
         activador1, who, posicion_f = ifs(alexa, who, activador)
         if activador1 == "activado":
-            alexa = alexa + posicion_f
+            alexa=posicion_f
         else:
             continue
 
-        jugar = input("Quieres tirar los dados?")
+    jugar = input("Quieres tirar los dados?")
 
