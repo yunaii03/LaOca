@@ -213,72 +213,72 @@ def movementalexa(alexa, who,tablero1):
 
 
 
-def ifs(posicion_j, who, activador):
+def ifs(posicion_j, who, activador,test):
     if posicion_j == 5 or posicion_j == 14 or posicion_j == 23 or posicion_j == 32 or posicion_j == 41 or posicion_j == 50 or posicion_j == 59:
         activador = "activado"
-        posicion_f = oca4(posicion_j, who)
-        return activador, who, posicion_f
+        posicion_f,tablero_actualizado = oca4(posicion_j, who)
+        return activador, who, posicion_f,tablero_actualizado
 
 
     elif posicion_j == 9 or posicion_j == 18 or posicion_j == 27 or posicion_j == 36 or posicion_j == 45 or posicion_j == 54:
         activador = "activado"
-        posicion_f = oca5(posicion_j, who)
-        return activador, who, posicion_f
+        posicion_f,tablero_actualizado = oca5(posicion_j, who)
+        return activador, who, posicion_f,tablero_actualizado
 
     elif posicion_j == 6:
         activador = "activado"
-        posicion_f = puente6(posicion_j, who)
-        return activador, who, posicion_f
+        posicion_f,tablero_actualizado = puente6(posicion_j, who)
+        return activador, who, posicion_f,tablero_actualizado
 
     elif posicion_j == 12:
         activador = "activado"
-        posicion_f = puente12(posicion_j, who)
-        return activador, who, posicion_f
+        posicion_f,tablero_actualizado = puente12(posicion_j, who)
+        return activador, who, posicion_f,tablero_actualizado
 
     elif posicion_j == 19:
         activador = "activado"
-        posicion_f = posada(posicion_j, who)
-        return activador, who, posicion_f
+        posicion_f,tablero_actualizado = posada(posicion_j, who)
+        return activador, who, posicion_f,tablero_actualizado
 
     elif posicion_j == 31:
         activador = "activado"
-        posicion_f = pozo_bronze(posicion_j, who)
-        return activador, who, posicion_f
+        posicion_f,tablero_actualizado = pozo_bronze(posicion_j, who)
+        return activador, who, posicion_f,tablero_actualizado
 
     elif posicion_j == 26:
         activador = "activado"
-        posicion_f = dados26(posicion_j, who)
-        return activador, who, posicion_f
+        posicion_f,tablero_actualizado = dados26(posicion_j, who)
+        return activador, who, posicion_f,tablero_actualizado
 
     elif posicion_j == 58:
         activador = "activado"
-        posicion_f = muerte(posicion_j, who)
-        return activador, who, posicion_f
+        posicion_f,tablero_actualizado = muerte(posicion_j, who)
+        return activador, who, posicion_f,tablero_actualizado
 
     elif posicion_j == 53:
         activador = "activado"
         posicion_f = dados53(posicion_j, who)
-        return activador, who, posicion_f
+        return activador, who, posicion_f,tablero_actualizado
 
     elif posicion_j == 42:
         activador = "activado"
-        posicion_f = laberinto(posicion_j, who)
-        return activador, who, posicion_f
+        posicion_f,tablero_actualizado = laberinto(posicion_j, who)
+        return activador, who, posicion_f,tablero_actualizado
 
     elif posicion_j == 58:
         activador = "activado"
         posicion_f = calavera(posicion_j, who)
-        return activador, who, posicion_f
+        return activador, who, posicion_f,tablero_actualizado
 
     elif posicion_j >= 62:
         activador = "activado"
-        posicion_f = win(who)
-        return activador, who, posicion_f
+        posicion_f,tablero_actualizado = win(who)
+        return activador, who, posicion_f,tablero_actualizado
 
     else:
         activador="desactivado"
         print("No hay casilla especial")
-        return activador, who, posicion_j
+        return activador, who, posicion_j,test
 
 
 # POSADA
@@ -290,8 +290,14 @@ def posada(posicion_j, who):
             tiro = dado(posicion_j)
             print("Has sacado un",tiro)
             posicion_j = posicion_j + tiro
-        mov_especial(posicion_j, who)
-        return posicion_j
+            a = 'si'
+        tablero_actualizado = mov_especial(posicion_j, who, a)
+        if tablero_actualizado == None:
+            tablero_actualizado = 'hola'
+        elif tablero_actualizado != None:
+            print('ok')
+        return posicion_j, tablero_actualizado
+
     elif who == "P1":
         who = "AL"
         print("P1 se perderá dos turnos. Ya puedes tirar los dados ")
@@ -299,33 +305,47 @@ def posada(posicion_j, who):
             tiro = dado(posicion_j)
             posicion_j = posicion_j + tiro
             print("Has sacado un", tiro)
-        mov_especial(posicion_j, who)
-        return posicion_j
+            a = 'si'
 
+        tablero_actualizado = mov_especial(posicion_j, who, a)
+        if tablero_actualizado == None:
+            tablero_actualizado = 'hola'
+        elif tablero_actualizado != None:
+            print('ok')
+        return posicion_j, tablero_actualizado
 
 
 # POZO BRONCE
 def pozo_bronze(posicion_j, who):
     if who == "AL":
         who = "P1"
+        a = 'si'
         print("Alexa se perderá dos turnos. Ya puedes tirar los dados ")
         for x in range(3):
             tiro = dado(posicion_j)
             posicion_j = posicion_j + tiro
             print("Has sacado un", tiro)
-        mov_especial(posicion_j, who)
-        return posicion_j
-
+        tablero_actualizado = mov_especial(posicion_j, who, a)
+        if tablero_actualizado == None:
+            tablero_actualizado = 'hola'
+        elif tablero_actualizado != None:
+            print('ok')
+        return posicion_j, tablero_actualizado
 
     elif who == "P1":
         who = "AL"
+        a = 'si'
         print("P1 se perderá dos turnos. Ya puedes tirar los dados ")
         for x in range(3):
             tiro = dado(posicion_j)
             posicion_j = posicion_j + tiro
             print("Has sacado un", tiro)
-        mov_especial(posicion_j, who)
-        return posicion_j
+        tablero_actualizado = mov_especial(posicion_j, who, a)
+        if tablero_actualizado == None:
+            tablero_actualizado = 'hola'
+        elif tablero_actualizado != None:
+            print('ok')
+        return posicion_j, tablero_actualizado
 
 
 def win(who):
@@ -336,28 +356,42 @@ def win(who):
 # PUENTE
 def puente6(posicion_j, who):
     posicion_j = posicion_j + 6
-    mov_especial(posicion_j, who)
+    a = 'si'
+    tablero_actualizado = mov_especial(posicion_j, who, a)
+    if tablero_actualizado == None:
+        tablero_actualizado = 'hola'
+    elif tablero_actualizado != None:
+        print('ok')
+    return posicion_j, tablero_actualizado
     print(who, "Has caido en un puente, avanzas 6 casillas")
-    return posicion_j
-
 
 def puente12(posicion_j, who):
     posicion_j = posicion_j + 6
-    mov_especial(posicion_j, who)
+    a = 'si'
+    tablero_actualizado = mov_especial(posicion_j, who, a)
+    if tablero_actualizado == None:
+        tablero_actualizado = 'hola'
+    elif tablero_actualizado != None:
+        print('ok')
+    return posicion_j, tablero_actualizado
     print(who, "Has caido en un puente, avanzas 6 casillas")
-    return posicion_j
-
 
 # CALAVERA
 def calavera(posicion_j, who):
     posicion_j = 0
-    mov_especial(posicion_j, who)
-    return posicion_j
+    a = 'si'
+    tablero_actualizado = mov_especial(posicion_j, who, a)
+    if tablero_actualizado == None:
+        tablero_actualizado = 'hola'
+    elif tablero_actualizado != None:
+        print('ok')
+    return posicion_j, tablero_actualizado
     print(who, 'Has retrocedido hasta la casilla principal y te encuentras en la salida', who)
 
 
 # DADOS
 def dados53(posicion_j, who):
+    a = 'si'
     print(who, "Tirarás dos veces y avanzarás la suma de las dos tiradas.")
     z = dado(posicion_j)
     print("has sacado un", z)
@@ -367,11 +401,16 @@ def dados53(posicion_j, who):
     posicion_j = posicion_j + x
     print(who, "avanzas", x)
 
-    mov_especial(posicion_j, who)
-    return posicion_j
+    tablero_actualizado = mov_especial(posicion_j, who, a)
+    if tablero_actualizado == None:
+        tablero_actualizado = 'hola'
+    elif tablero_actualizado != None:
+        print('ok')
+    return posicion_j, tablero_actualizado
 
 
 def dados26(posicion_j, who):
+    a = 'si'
     print(who, "Tirarás dos veces y avanzarás la suma de las dos tiradas.")
     z = dado(posicion_j)
     print("has sacado un", z)
@@ -380,32 +419,51 @@ def dados26(posicion_j, who):
     x = z + y
     posicion_j = posicion_j + x
     print(who, "avanzas", x)
-    mov_especial(posicion_j, who)
-    return posicion_j
+    tablero_actualizado = mov_especial(posicion_j, who, a)
+    if tablero_actualizado == None:
+        tablero_actualizado = 'hola'
+    elif tablero_actualizado != None:
+        print('ok')
+    return posicion_j, tablero_actualizado
 
 
 # MUERTE
 
 def muerte(posicion_j, who):
     posicion_j = 0
-    mov_especial(posicion_j, who)
+    a = 'si'
+    tablero_actualizado = mov_especial(posicion_j, who, a)
+    if tablero_actualizado == None:
+        tablero_actualizado = 'hola'
+    elif tablero_actualizado != None:
+        print('ok')
+    return posicion_j, tablero_actualizado
     print(who, 'Has retrocedido hasta la casilla principal y te encuentras en la salida', who)
-    return posicion_j
 
 
 # LABERINTO
 def laberinto(posicion_j, who):
     if who == "AL":
         posicion_j = 30
+        a = 'si'
         print("Alexa, caido en un laberinto, irás a la casilla 30")
-        mov_especial(posicion_j, who)
-        return posicion_j
+        tablero_actualizado = mov_especial(posicion_j, who, a)
+        if tablero_actualizado == None:
+            tablero_actualizado = 'hola'
+        elif tablero_actualizado != None:
+            print('ok')
+        return posicion_j, tablero_actualizado
 
     elif who == "P1":
         posicion_j = 30
+        a = 'si'
         print("Jugador 1, has caido en un laberinto, irás a la casilla 30")
-        mov_especial(posicion_j, who)
-        return posicion_j
+        tablero_actualizado = mov_especial(posicion_j, who, a)
+        if tablero_actualizado == None:
+            tablero_actualizado = 'hola'
+        elif tablero_actualizado != None:
+            print('ok')
+        return posicion_j, tablero_actualizado
 
 
 # OCA
@@ -413,48 +471,68 @@ def oca4(posicion_j, who):
     if posicion_j == 5:
         posicion_j = 14
         print(who, "has caido en una Oca, pasas a la casilla 14")
+        a = 'si'
     elif posicion_j == 14:
         posicion_j = 32
         print(who, "has caido en una Oca, pasas a la casilla 32")
+        a = 'si'
     elif posicion_j == 32:
         posicion_j = 41
         print(who, "has caido en una Oca, pasas a la casilla 41")
+        a = 'si'
 
     elif posicion_j == 41:
         posicion_j = 50
         print(who, "has caido en una Oca, pasas a la casilla 50")
+        a = 'si'
     elif posicion_j == 50:
         posicion_j = 59
         print(who, "has caido en una Oca, pasas a la casilla 59")
-    mov_especial(posicion_j, who)
-    return posicion_j
+        a = 'si'
+    tablero_actualizado = mov_especial(posicion_j, who, a)
+    if tablero_actualizado == None:
+        tablero_actualizado = 'hola'
+    elif tablero_actualizado != None:
+        print('ok')
+    return posicion_j, tablero_actualizado
 
 
 def oca5(posicion_j, who):
     if posicion_j == 9:
         posicion_j = 14
         print(who, "has caido en una Oca, pasas a la casilla 14")
+        a = 'si'
 
     elif posicion_j == 18:
         posicion_j = 32
         print(who, "has caido en una Oca, pasas a la casilla 32")
+        a = 'si'
     elif posicion_j == 27:
         posicion_j = 41
         print(who, "has caido en una Oca, pasas a la casilla 41")
+        a = 'si'
     elif posicion_j == 36:
         posicion_j = 50
         print(who, "has caido en una Oca, pasas a la casilla 50")
+        a = 'si'
     elif posicion_j == 45:
         posicion_j = 59
         print(who, "has caido en una Oca, pasas a la casilla 59")
+        a = 'si'
     elif posicion_j == 54:
         posicion_j = 59
         print(who, "has caido en una Oca, pasas a la casilla 59")
-    mov_especial(posicion_j, who)
-    return posicion_j
+        a = 'si'
+    tablero_actualizado = mov_especial(posicion_j, who, a)
+    if tablero_actualizado == None:
+        tablero_actualizado = 'hola'
+    elif tablero_actualizado != None:
+        print('ok')
+    return posicion_j, tablero_actualizado
 
 
-def mov_especial(posicion_esp, who):
+
+def mov_especial(posicion_esp, who,a):
     tablero1 = {7: ["_", "_", "P", "O", "_", "_", "_", "O"],
                 6: ["_", "_", "L", "O", "_", "_", "_", "_"],
                 5: ["O", "_", "_", "_", "_", "O", "_", "P"],
@@ -544,4 +622,8 @@ def mov_especial(posicion_esp, who):
                 print(m, end=" ")
             print()
         print()
+
+    if a=='si':
+        return tablero1
+
 
