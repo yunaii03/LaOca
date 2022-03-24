@@ -29,6 +29,7 @@ jugar=input("Para tirar el dado, inserta un .")
 
 while jugar=="." and who!="FINAL":
     #TURNO P1
+    jugar = input("Quieres tirar los dados?")
     tiro = dado(P1)
     P1=P1+tiro
 
@@ -40,11 +41,12 @@ while jugar=="." and who!="FINAL":
 
     activador="desactivado"
     #Posicion CON casilla especial:
-
-    activador1, who, posicion_f = ifs(P1, who, activador)
+    test = 0
+    activador1, who, posicion_f,tablero_actualizado = ifs(P1, who, activador,test)
 
     if activador1 == "activado":
         P1=posicion_f
+        tablero1 = tablero_actualizado
     else:
         print("De verdad que no la hay")
 
@@ -57,17 +59,18 @@ while jugar=="." and who!="FINAL":
         # posicion SIN casilla especial:
         who = "AL"
         posicion_definitiva_alexa, who,tablero1 = movementalexa(alexa, who,tablero1)
-        print(type(posicion_definitiva_alexa))
         alexa = posicion_definitiva_alexa
 
         activador = "desactivado"
         # Posicion CON casilla especial:
+        test = 0
 
-        activador1, who, posicion_f = ifs(alexa, who, activador)
+        activador1, who, posicion_f,tablero_actualizado = ifs(alexa, who, activador,test)
         if activador1 == "activado":
             alexa=posicion_f
+            tablero1 = tablero_actualizado
         else:
             continue
 
-    jugar = input("Quieres tirar los dados?")
+
 
