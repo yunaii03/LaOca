@@ -1,47 +1,613 @@
+en el main solo se ejecuta::
 
-#1
-import ubi,tabl from funciones
+from functions import disparar_coordenadas
 
-print("Bienvenido a Guerra Naval XXL Comandante! ")
+disparar_coordenadas()
 
-nombrej1=input("Para empezar, indica tu nombre de jugador: ")
-
-ubi=coloc_barcos()
-
-print("Perfecto, te vas a enfrentar contra la IA")
-tabl=tableros()
+funciones::::: 
+import random
 
 
-turn=turnos()
+def tabl_vacio():
+   tablero_vacio = {0: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+                    1: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+                    2: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+                    3: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+                    4: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+                    5: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+                    6: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+                    7: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+                    8: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+                    9: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-']}
+   return tablero_vacio
 
-#2
-tablero={0:['-','-','-','-','-','-','-','-','-','-'],
-        1:['-','-','-','-','-','-','-','-','-','-'],
-        2:['-','-','-','-','-','-','-','-','-','-'],
-        3:['-','-','-','-','-','-','-','-','-','-'],
-        4:['-','-','-','-','-','-','-','-','-','-'],
-        5:['-','-','-','-','-','-','-','-','-','-'],
-        6:['-','-','-','-','-','-','-','-','-','-'],
-        7:['-','-','-','-','-','-','-','-','-','-'],
-        8:['-','-','-','-','-','-','-','-','-','-'],
-        9:['-','-','-','-','-','-','-','-','-','-']}
 
-#3
-def turnos():
-    ataque=int(input("Que coordenada quieres atacar" ))
-    f=int(input("Dime la fila "))
-    c=int(input("Dime la columna"))
-    det=detector(f,c)   #que detectara si hay algún barco en esa posicion
+def tabl_pc():
+   x = random.randint(1, 5)
 
-#4
-def detector(f,c):
-    if tablero[f,c]=="*":
-        tabero[f,c]=="º"
-        print("Has dado con un barco!")
-        j=actualizar_tablero()
-    else:
-        print("No hay ningún barco en ese coordenada, buen intento comandante! ")
+   tablero1 = {0: ['-', '-', '-', '-', '-', '-', '-', '-', '○', '-'],
+               1: ['-', '-', '-', '-', '-', '-', '-', '-', '○', '-'],
+               2: ['-', '○', '-', '-', '-', '-', '-', '-', '○', '-'],
+               3: ['-', '○', '-', '-', '-', '-', '-', '-', '-', '-'],
+               4: ['-', '-', '-', '○', '○', '○', '○', '○', '-', '-'],
+               5: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+               6: ['-', '○', '○', '○', '○', '-', '-', '-', '-', '-'],
+               7: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+               8: ['-', '-', '-', '-', '-', '-', '○', '○', '○', '-'],
+               9: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-']}
 
-#5
-def actualizar_tablero():
+   tablero2 = {0: ['○', '○', '○', '○', '-', '-', '-', '-', '-', '-'],
+               1: ['-', '-', '-', '-', '-', '-', '○', '-', '-', '-'],
+               2: ['-', '-', '-', '-', '-', '-', '○', '-', '-', '○'],
+               3: ['-', '-', '-', '-', '-', '-', '○', '-', '-', '○'],
+               4: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '○'],
+               5: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '○'],
+               6: ['○', '○', '○', '-', '-', '-', '-', '-', '-', '○'],
+               7: ['-', '-', '-', '-', '-', '-', '-', '○', '-', '-'],
+               8: ['-', '-', '-', '-', '-', '-', '-', '○', '-', '-'],
+               9: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-']}
+
+   tablero3 = {0: ['-', '-', '○', '-', '-', '-', '-', '-', '-', '-'],
+               1: ['-', '-', '○', '-', '-', '-', '-', '-', '-', '-'],
+               2: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+               3: ['-', '-', '○', '○', '○', '-', '-', '-', '-', '-'],
+               4: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+               5: ['-', '-', '-', '-', '-', '-', '-', '○', '-', '-'],
+               6: ['-', '-', '-', '-', '-', '-', '-', '○', '-', '-'],
+               7: ['-', '○', '○', '○', '○', '-', '-', '○', '-', '-'],
+               8: ['-', '-', '-', '-', '-', '-', '-', '○', '-', '-'],
+               9: ['-', '-', '○', '○', '○', '-', '-', '○', '-', '-']}
+
+   tablero4 = {0: ['-', '-', '-', '-', '-', '○', '○', '○', '○', '○'],
+               1: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+               2: ['○', '○', '○', '-', '-', '-', '-', '-', '-', '-'],
+               3: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+               4: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+               5: ['-', '-', '-', '-', '-', '○', '○', '-', '-', '-'],
+               6: ['○', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+               7: ['○', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+               8: ['○', '-', '-', '-', '-', '○', '○', '○', '-', '-'],
+               9: ['○', '-', '-', '-', '-', '-', '-', '-', '-', '-']}
+
+   tablero5 = {0: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+               1: ['-', '○', '○', '○', '○', '-', '-', '-', '-', '-'],
+               2: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+               3: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '○'],
+               4: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '○'],
+               5: ['-', '-', '-', '○', '○', '○', '○', '○', '-', '-'],
+               6: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+               7: ['-', '-', '○', '-', '-', '-', '-', '-', '-', '-'],
+               8: ['-', '-', '○', '-', '-', '-', '○', '○', '○', '-'],
+               9: ['-', '-', '○', '-', '-', '-', '-', '-', '-', '-']}
+   if x == 1:
+       print("tabl 1", tablero1)
+       return (tablero1)
+   if x == 2:
+       print("tabl 2", tablero2)
+       return (tablero2)
+   if x == 3:
+       print("tabl 3", tablero3)
+       return (tablero3)
+   if x == 4:
+       print("tabl 4", tablero3)
+       return (tablero4)
+   if x == 5:
+       print("tabl 5", tablero5)
+       return (tablero5)
+
+
+def tablero_j():
+   tablero_j = {0: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+                1: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+                2: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+                3: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+                4: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+                5: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+                6: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+                7: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+                8: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
+                9: ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-']}
+   return tablero_j
+
+
+def pedir_coordenadas():
+   t = tablero_j()
+
+   total = 0
+   print("!!!!Importante leer las instrucciones!!!1")
+   print(
+       "Comandante, vas a jugar contra Siri una partida de hundir la flota, empiezas colocando los barcos,  mira en posiciones has colocado los barcos, "
+       "y ponlos de forma en que ningun barco quede por encima de otro, ten en cuenta que no escribes vien horizontal o vertical, "
+       "o si colocas los barcos mal no podras jugar correctamente. "
+       "Seguidamente, tendras que indicar a que coordenadas quieres disparar, "
+       "una vez haya pasado tu turno, Siri disparara a una de las coordenadas de tu tablero.")
+   while total != 5:
+
+       totall = 0
+       confirmador = True
+       while totall != 2:
+
+           print("Comandante, coordenadas exactas para colocar el Destructor (2 celdas): ")
+           x = int(input("Dime la fila: "))
+           y = int(input("Dime la columna: "))
+           o = input("Como quieres poner el barco, en horizontal o en vertical?")
+
+           if y != 9 and o == "horizontal":
+               if t[x][y] == "-":
+                   t[x][y] = '○'
+                   y = y + 1
+                   totall = totall + 1
+
+                   if t[x][y] == '-':
+                       t[x][y] = '○'
+                       totall = totall + 1
+                       total = total + 1
+
+           if x != 9 and o == "vertical":
+               if t[x][y] == "-":
+                   t[x][y] = '○'
+                   x = x + 1
+                   totall = totall + 1
+
+                   if t[x][y] == '-':
+                       t[x][y] = '○'
+                       totall = totall + 1
+                       total = total + 1
+
+
+       for ii in t:
+           for pp in t[ii]:
+               print(pp, end=" ")
+           print()
+       print()
+
+       while totall != 5:
+
+           print("Comandante, coordenadas exactas para colocar el Destructor (3 celdas): ")
+           x = int(input("Dime la fila: "))
+           y = int(input("Dime la columna: "))
+           o = input("Como quieres poner el barco, en horizontal o en vertical?")
+
+           if y != 9 and y != 8 and o == "horizontal":
+
+               if y != 9 and y != 8:
+
+                   if t[x][y] == "-":
+                       t[x][y] = '○'
+
+                       y = y + 1
+                       totall = totall + 1
+
+                       if t[x][y] == '-':
+                           t[x][y] = '○'
+                           y = y + 1
+                           totall = totall + 1
+
+                           if t[x][y] == '-':
+                               t[x][y] = '○'
+
+                               totall = totall + 1
+                               total = total + 1
+
+
+           if x != 9 and x != 8 and x != 7 and o == "vertical":
+
+               if x != 9 and x != 8 and x != 7:
+
+                   if t[x][y] == "-":
+                       t[x][y] = '○'
+
+                       x = x + 1
+                       totall = totall + 1
+
+                       if t[x][y] == '-':
+                           t[x][y] = '○'
+                           x = x + 1
+                           totall = totall + 1
+
+                           if t[x][y] == '-':
+                               t[x][y] = '○'
+
+                               totall = totall + 1
+                               total = total + 1
+
+           if totall != 5:
+               confirmador = False
+               print("Has colocado un barco mal")
+               break
+           for ii in t:
+               for pp in t[ii]:
+                   print(pp, end=" ")
+               print()
+           print()
+
+       for ii in t:
+           for pp in t[ii]:
+               print(pp, end=" ")
+           print()
+       print()
+
+       while totall != 8 and confirmador != False:
+           print("Comandante, coordenadas exactas para colocar el segundo Destructor (3 celdas): ")
+           x = int(input("Dime la fila: "))
+           y = int(input("Dime la columna: "))
+           o = input("Como quieres poner el barco, en horizontal o en vertical?")
+
+           if y != 9 and y != 8 and o == "horizontal":
+
+               if y != 9 and y != 8 and totall != 8:
+
+                   if t[x][y] == "-":
+                       t[x][y] = '○'
+
+                       y = y + 1
+                       totall = totall + 1
+
+                       if t[x][y] == '-':
+                           t[x][y] = '○'
+                           y = y + 1
+                           totall = totall + 1
+
+                           if t[x][y] == '-':
+                               t[x][y] = '○'
+
+                               totall = totall + 1
+                               total = total + 1
+
+
+           if x != 9 and x != 8 and x != 7 and o == "vertical":
+
+               if x != 9 and x != 8 and x != 7:
+
+                   if t[x][y] == "-":
+                       t[x][y] = '○'
+
+                       x = x + 1
+                       totall = totall + 1
+
+                       if t[x][y] == '-':
+                           t[x][y] = '○'
+                           x = x + 1
+                           totall = totall + 1
+
+                           if t[x][y] == '-':
+                               t[x][y] = '○'
+
+                               totall = totall + 1
+                               total = total + 1
+
+
+       if totall != 8:
+           confirmador = False
+           print("Has colocado un barco mal")
+           break
+       for ii in t:
+           for pp in t[ii]:
+               print(pp, end=" ")
+           print()
+       print()
+
+       for ii in t:
+           for pp in t[ii]:
+               print(pp, end=" ")
+           print()
+       print()
+
+       while totall != 12 and confirmador != False:
+           print("Comandante, coordenadas exactas para colocar el  Destructor (4 celdas): ")
+           x = int(input("Dime la fila: "))
+           y = int(input("Dime la columna: "))
+           o = input("Como quieres poner el barco, en horizontal o en vertical?")
+
+           if y != 9 and y != 8 and y != 7 and y != 6 and o == "horizontal":
+
+               if y != 9 and y != 8 and totall != 12:
+
+                   if t[x][y] == "-":
+                       t[x][y] = '○'
+
+                       y = y + 1
+                       totall = totall + 1
+
+
+                       if t[x][y] == "-":
+                           t[x][y] = '○'
+
+                           y = y + 1
+                           totall = totall + 1
+
+                           if t[x][y] == "-":
+                               t[x][y] = '○'
+
+                               totall = totall + 1
+                               total = total + 1
+                               y = y + 1
+                               if t[x][y] == "-":
+                                   t[x][y] = '○'
+                                   y = y + 1
+                                   totall = totall + 1
+
+           if x != 9 and x != 8 and x != 7 and y != 6 and o == "vertical":
+
+               if x != 9 and x != 8 and x != 7 and y != 6:
+
+                   if t[x][y] == "-":
+                       t[x][y] = '○'
+
+                       x = x + 1
+                       totall = totall + 1
+
+                       if t[x][y] == '-':
+                           t[x][y] = '○'
+                           x = x + 1
+                           totall = totall + 1
+
+                           if t[x][y] == '-':
+                               t[x][y] = '○'
+                               x = x + 1
+                               totall = totall + 1
+                               total = total + 1
+                               if t[x][y] == '-':
+                                   t[x][y] = '○'
+                                   x = x + 1
+                                   totall = totall + 1
+                               print("El totallllllll es", totall)
+                               print("El total es", total)
+
+           if totall != 12:
+               confirmador = False
+               print("Has colocado un barco mal")
+               break
+
+       for ii in t:
+           for pp in t[ii]:
+               print(pp, end=" ")
+           print()
+       print()
+       while totall != 17 and confirmador != False:
+
+           print("Comandante, coordenadas exactas para colocar el  Destructor (5 celdas): ")
+           x = int(input("Dime la fila: "))
+           y = int(input("Dime la columna: "))
+           o = input("Como quieres poner el barco, en horizontal o en vertical?")
+
+           if y != 9 and y != 8 and y != 7 and y != 6 and o == "horizontal":
+
+               if y != 9 and y != 8 and y != 7 and y != 6:
+
+                   if t[x][y] == "-":
+                       t[x][y] = '○'
+
+                       y = y + 1
+                       totall = totall + 1
+                       print("El total es", total)
+                       print("El totall es", totall)
+
+                       if t[x][y] == '-':
+                           t[x][y] = '○'
+                           y = y + 1
+                           totall = totall + 1
+                           print("El total es", total)
+                           print("El totall es", totall)
+
+                           if t[x][y] == '-':
+                               t[x][y] = '○'
+                               y = y + 1
+                               totall = totall + 1
+                               print("El total es", total)
+                               print("El totall es", totall)
+
+                               if t[x][y] == '-':
+                                   t[x][y] = '○'
+                                   y = y + 1
+                                   totall = totall + 1
+                                   if t[x][y] == '-':
+                                       t[x][y] = '○'
+                                       totall = totall + 1
+                                       total = total + 1
+                               print("El total es", total)
+                               print("El totall es", totall)
+
+           if x != 9 and x != 8 and x != 7 and x != 6 and o == "vertical":
+
+               if x != 9 and x != 8 and x != 7 and x != 6:
+
+                   if t[x][y] == "-":
+                       t[x][y] = '○'
+
+                       x = x + 1
+                       totall = totall + 1
+                       print("El total es", total)
+                       print("El totall es", totall)
+
+                       if t[x][y] == '-':
+                           t[x][y] = '○'
+                           x = x + 1
+                           totall = totall + 1
+                           print("El total es", total)
+                           print("El totall es", totall)
+
+                           if t[x][y] == '-':
+                               t[x][y] = '○'
+                               x = x + 1
+                               totall = totall + 1
+                               print("El total es", total)
+                               print("El totall es", totall)
+
+                               if t[x][y] == '-':
+                                   t[x][y] = '○'
+                                   x = x + 1
+                                   totall = totall + 1
+                                   if t[x][y] == '-':
+                                       t[x][y] = '○'
+                                       totall = totall + 1
+                                       total = total + 1
+                               print("El total es", total)
+                               print("El totall es", totall)
+
+           if totall != 17:
+               confirmador = False
+               print("Has colocado un barco mal")
+               break
+           for ii in t:
+               for pp in t[ii]:
+                   print(pp, end=" ")
+               print()
+           print()
+
+       for ii in t:
+           for pp in t[ii]:
+               print(pp, end=" ")
+           print()
+       print()
+
+       return t
+
+
+def disparar_coordenadas():
+   tt = tabl_pc()
+   tab = pedir_coordenadas()
+   pz = input("Le tienes miedo a la guerra??")
+   total = 0
+   totalll_s = 0
+   tabll_vacio = tabl_vacio()
+   confirmador_s = 0
+   confirmador_j = 0
+
+   while pz!="si" and total != 17 or totalll_s !=17:
+
+       while pz!="si" and total != 17 or totalll_s !=17:
+
+           pz = input("Quieres huir??")
+           print("Comandante es tu turno, coordenadas exactas para disparar: ")
+           px = int(input("Dime la fila: "))
+           py = int(input("Dime la columna: "))
+           kkkk = input("Pulsa . para disparar")
+           while pz!="si" and total != 17 or totalll_s !=17:
+
+               if tt[px][py] == '○':
+                   tt[px][py] = 'X'
+                   tabll_vacio[px][py] = 'X'
+                   confirmador_j = confirmador_j + 1
+                   total = total + 1
+
+                   print("Le has dado a un barco")
+                   for ii in tabll_vacio:
+                       for ll in tabll_vacio[ii]:
+                           print(ll, end=" ")
+                       print()
+                   print()
+               elif tt[px][py] == '-':
+                   tt[px][py] = "*"
+                   tabll_vacio[px][py] = '*'
+                   print("!!!!!No le has dado a ningun barco!!!!!")
+                   confirmador_s = confirmador_s + 1
+
+                   for ii in tabll_vacio:
+                       for ll in tabll_vacio[ii]:
+                           print(ll, end=" ")
+                       print()
+                   print()
+               elif tt[px][py] == 'X':
+
+                   print("!!!!Ya le has dado ha ese barco!!!!!")
+
+
+                   confirmador_s = confirmador_s + 1
+                   for ii in tabll_vacio:
+                       for ll in tabll_vacio[ii]:
+                           print(ll, end=" ")
+                       print()
+                   print()
+
+
+
+               kk = input("Pulsa . para cambiar de turno")
+               if kk == ".":
+
+                   break
+           if  kkkk==".":
+
+               break
+
+
+
+
+
+
+
+
+
+
+
+       while pz!="si" and total != 17 or totalll_s !=17:
+
+           ll = random.randint(0, 9)
+           vv = random.randint(0, 9)
+
+           print("!!!!Turno de Siri...!!!!")
+           kkkk = input("Pulsa . para disparar")
+           print("Siri ha disparado en la casilla", ll, vv)
+
+           while totalll_s !=17:
+               if tab[ll][vv] == '○':
+                   tab[ll][vv] = 'X'
+                   print("!!!!Siri ha dado a un barco!!!!", ll, vv)
+                   confirmador_s = confirmador_s +1
+                   totalll_s = totalll_s + 1
+
+                   for ii in tab:
+                       for pp in tab[ii]:
+                           print(pp, end=" ")
+                       print()
+                   print()
+
+               elif tab[ll][vv] == '-':
+                   tab[ll][vv] = '*'
+                   print("!!!!!Siri no le ha dado ha ningun barco!!!!!")
+
+                   for ii in tab:
+                       for pp in tab[ii]:
+                           print(pp, end=" ")
+                       print()
+                   print()
+
+               elif tab[ll][vv] == '*':
+                   print("Siri ya habia disparado en esta posicion")
+                   for ii in tab:
+                       for pp in tab[ii]:
+                           print(pp, end=" ")
+                       print()
+                   print()
+
+               elif tab[ll][vv] == 'X':
+                   print("!!!!Siri ya le ha dado ha ese barco !!!!!")
+
+                   for ii in tab:
+                       for pp in tab[ii]:
+                           print(pp, end=" ")
+                       print()
+                   print()
+
+               pz = input("Quieres terminar el combate??")
+
+               kk = input("Pulsa . para cambiar de turno")
+               if kk == ".":
+
+                   break
+           if kkkk == ".":
+
+               break
+           if total == 17:
+               print("Has ganado")
+
+       if  total==17:
+        print("!!!!!Has ganado!!!!")
+        print("!!!Bien hecho comandante!!!")
+        break
+       if totalll_s==17:
+        print("!!!!!Ha ganado Siri!!!!")
+        print("La proxima guerra ira mejor...")
+        break
+
 
